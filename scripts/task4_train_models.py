@@ -1,0 +1,81 @@
+import pandas as pd
+import joblib
+import os
+from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import accuracy_score, f1_score, log_loss
+
+os.makedirs("../models", exist_ok=True)
+
+# 1. Face Model
+print("--- Training Face Model ---")
+face_df = pd.read_csv("../images/image_features/image_features.csv")
+X_face = face_df.drop(columns=["image", "person"]) 
+y_face = face_df["person"]
+
+X_train_f, X_test_f, y_train_f, y_test_f = train_test_split(X_face, y_face, test_size=0.2, random_state=42)
+
+face_model = RandomForestClassifier(n_estimators=100, random_state=42)
+face_model.fit(X_train_f, y_train_f)
+
+face_preds = face_model.predict(X_test_f)
+face_probs = face_model.predict_proba(X_test_f) 
+
+print(f"Accuracy: {accuracy_score(y_test_f, face_preds) * 100:.2f}%")
+print(f"F1-Score: {f1_score(y_test_f, face_preds, average='weighted'):.4f}")
+print(f"Loss (Log Loss): {log_loss(y_test_f, face_probs, labels=face_model.classes_):.4f}")
+
+joblib.dump(face_model, "../models/face_model.pkl")
+print("✅ Saved: models/face_model.pkl\n")
+
+# 2. Voice Model
+print("--- Training Voice Model ---")
+voice_df = pd.read_csv("../audio/audio_features.csv")
+X_voice = voice_df.drop(columns=["filename", "member", "phrase", "augmentation"])
+y_voice = voice_df["member"]
+
+X_train_v, X_test_v, y_train_v, y_test_v = train_test_split(X_voice, y_voice, test_size=0.2, random_state=42)
+
+voice_model = RandomForestClassifier(n_estimators=100, random_state=42)
+voice_model.fit(X_train_v, y_train_v)
+
+voice_preds = voice_model.predict(X_test_v)
+voice_probs = voice_model.predict_proba(X_test_v)
+
+print(f"Accuracy: {accuracy_score(y_test_v, voice_preds) * 100:.2f}%")
+print(f"F1-Score: {f1_score(y_test_v, voice_preds, average='weighted'):.4f}")
+print(f"Loss (Log Loss): {log_loss(y_test_v, voice_probs, labels=voice_model.classes_):.4f}")
+
+joblib.dump(voice_model, "../models/voice_model.pkl")
+print("✅ Saved: models/voice_model.pkl\n")
+
+# 3. Product Model
+print("--- Training Product Model ---")
+product_df = pd.read_csv("../datasets/merged_dataset.csv")
+
+target_column = "product_purchased" 
+
+if target_column in product_df.columns:
+    columns_to_drop = [target_column, "customer_id", "transaction_date"]
+    X_prod = product_df.drop(columns=[col for col in columns_to_drop if col in product_df.columns])
+    
+    X_prod = X_prod.fillna(0) 
+    X_prod = pd.get_dummies(X_prod) 
+    y_prod = product_df[target_column]
+
+    X_train_p, X_test_p, y_train_p, y_test_p = train_test_split(X_prod, y_prod, test_size=0.2, random_state=42)
+
+    product_model = RandomForestClassifier(n_estimators=100, random_state=42)
+    product_model.fit(X_train_p, y_train_p)
+    
+    product_preds = product_model.predict(X_test_p)
+    product_probs = product_model.predict_proba(X_test_p)
+
+    print(f"Accuracy: {accuracy_score(y_test_p, product_preds) * 100:.2f}%")
+    print(f"F1-Score: {f1_score(y_test_p, product_preds, average='weighted'):.4f}")
+    print(f"Loss (Log Loss): {log_loss(y_test_p, product_probs, labels=product_model.classes_):.4f}")
+
+    joblib.dump(product_model, "../models/product_model.pkl")
+    print("✅ Saved: models/product_model.pkl\n")
+else:
+    print(f"Error: Target column '{target_column}' not found.")

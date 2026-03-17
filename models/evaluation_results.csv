@@ -1,0 +1,4 @@
+Model,Accuracy,F1-Score,Log Loss
+Facial Recognition,1.0,1.0,0.0788
+Voice Verification,1.0,1.0,0.1037
+Product Recommendation,0.1667,0.1704,1.923

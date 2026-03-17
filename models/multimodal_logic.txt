@@ -1,0 +1,105 @@
+
+SYSTEM FLOW DIAGRAM:
+--------------------
+        START
+          |
+          V
++-----------------+
+|   FACE INPUT    |
+|  Member2.jpg    |
++-----------------+
+          |
+          V
++-----------------+
+|  FACE MODEL     |
+|  Accuracy: 100% |
++-----------------+
+          |
+      +---+---+
+      |       |
+      V       | No
++---------+   | Match
+|  MATCH  |   |
+| Member2 |   |
++---------+   |
+      |       V
+      |   +---------+
+      |   | ACCESS  |
+      |   | DENIED  |
+      |   +---------+
+      V
++-----------------+
+|  VOICE INPUT    |
+|  Member2_yes.wav|
++-----------------+
+      |
+      V
++-----------------+
+|  VOICE MODEL    |
+|  Accuracy: 100% |
++-----------------+
+      |
+  +---+---+
+  |       |
+  V       | No
++---------+ | Match
+|  MATCH  | |
+| Member2 | |
++---------+ |
+  |       V
+  |   +---------+
+  |   | ACCESS  |
+  |   | DENIED  |
+  |   +---------+
+  V
++-----------------+
+|   PRODUCT       |
+|   MODEL         |
+|   Accuracy: 17% |
++-----------------+
+      |
+      V
++-----------------+
+|  RECOMMENDATION |
+|    "LAPTOP"     |
++-----------------+
+      |
+      V
+     END
+
+ACTUAL RESULTS FROM OUR MODELS:
+-------------------------------
+* Face Model:    100% accuracy - Perfectly identifies all 4 team members
+* Voice Model:   100% accuracy - Perfectly identifies all voice samples
+* Product Model: 17% accuracy  - Struggles with product prediction (small dataset)
+
+HOW THE SYSTEM WORKS:
+--------------------
+1. User provides face image (e.g., Member2_neutral.jpg)
+2. Face model predicts identity with 100% accuracy
+3. If face matches a registered user -> Product model access granted
+4. User provides voice sample (e.g., Member2_yes_approve.wav)
+5. Voice model verifies identity with 100% accuracy
+6. If voice matches SAME user -> Product recommendation displayed
+7. Product model predicts what they'll buy (17% accuracy - can be improved with more data)
+
+SECURITY FEATURES:
+----------------
+* Two-factor biometric authentication
+* Face and voice must match the SAME person
+* Immediate rejection if either fails
+* Prevents unauthorized access even with photos
+
+EVALUATION METRICS SUMMARY:
+--------------------------
+| Model                 | Accuracy | F1-Score | Log Loss |
+|-----------------------|----------|----------|----------|
+| Facial Recognition    | 100.00%  | 1.0000   | 0.0788   |
+| Voice Verification    | 100.00%  | 1.0000   | 0.1037   |
+| Product Recommendation| 16.67%   | 0.1704   | 1.9230   |
+
+INTERPRETATION:
+--------------
+* Face & Voice Models: Perfect performance due to small, clean dataset
+* Product Model: Low accuracy indicates need for more training data
+* System successfully implements two-factor authentication
