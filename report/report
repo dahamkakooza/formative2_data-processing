@@ -1,0 +1,131 @@
+# Project Report — formative2_data-processing
+
+## 1) Quick Project Summary
+This project is a complete multimodal data-processing workflow. In simple terms, the team collected tabular, image, and audio data, cleaned and transformed it, extracted useful features, trained baseline models, and evaluated results.
+
+The repository is practical and implementation-focused, not just theory. It contains scripts, generated outputs, trained model artifacts, and evaluation files that reflect real work done across all tasks.
+
+---
+
+## 2) What Is Already Delivered in the Repo
+
+### Data assets
+- `datasets/customer_social_profiles - customer_social_profiles.csv`
+- `datasets/customer_transactions - customer_transactions.csv`
+- `datasets/merged_dataset.csv`
+
+### Audio processing artifacts
+- `audio/task3_audio_processing.py`
+- `audio/audio_features.csv`
+- `audio/raw/`, `audio/augmented/`, `audio/visualizations/`
+
+### Image processing artifacts
+- `images/raw/`
+- `images/image_features/` (including extracted feature CSVs)
+
+### Model and evaluation artifacts
+- `models/face_model.pkl`
+- `models/voice_model.pkl`
+- `models/product_model.pkl`
+- `models/evaluation_results.csv`
+- `models/evaluation_chart.png`
+- `models/confusion_matrices.png`
+- `models/multimodal_logic.txt`
+
+### Task implementation scripts
+- `scripts/task1_data_merge.py`
+- `scripts/task4_train_models.py`
+- `scripts/task5_evaluate.py`
+- `scripts/task6_simulation.py`
+
+---
+
+## 3) How the End-to-End Workflow Operates
+
+### Task 1: Data Merge and EDA
+Customer profile and transaction datasets are merged into one analytical dataset. This forms the base for downstream modeling and evaluation.
+
+### Task 2: Image Collection and Processing
+Face-expression images are collected, organized, and transformed into structured image feature outputs for model use.
+
+### Task 3: Audio Collection and Processing
+The audio pipeline in `audio/task3_audio_processing.py` does the following:
+1. Locates WAV files in the raw folder
+2. Loads audio and creates waveform/spectrogram visualizations
+3. Applies augmentations (pitch shift, time stretch, noise)
+4. Extracts MFCC, spectral rolloff, and RMS features
+5. Exports features into `audio/audio_features.csv`
+
+### Task 4: Model Training
+Baseline models for face, voice, and product recommendation are trained and saved as `.pkl` artifacts.
+
+### Task 5: Evaluation and Decision Logic
+Model outputs are evaluated with result tables and visual metrics. Multimodal decision logic is documented in project files.
+
+### Task 6: Simulation
+The simulation script connects the pipeline pieces to represent a full operational flow.
+
+---
+
+## 4) Team Contribution Mapping (By Task)
+
+Based on `contribution.md` plus pushed repository evidence:
+
+### Kakooza Mahad
+- Task 1: Data Merge & EDA
+- Task 3: Audio Collection & Processing
+- Task 5: Evaluation & Logic
+- Delivered audio recordings, visualizations, augmentation, and audio feature extraction outputs
+
+### El Hajy Faly
+- Task 2: Image Collection & Processing
+- Delivered image collection and image-feature processing outputs
+
+### Josephine Kanu
+- Task 4: Model Training (face, voice, product)
+- Task 6: System Simulation and repository integration support
+
+### Recent commit visibility
+- `dahamkakooza`: setup and contribution documentation improvements
+- `falyseck`: image-processing related push
+- `i.kalisa1`: additional raw image push updates
+
+---
+
+## 5) AI Involvement Policy (10% Scope)
+This report applies a balanced and academically safe position: AI is treated as a support assistant, not the implementation owner.
+
+Approximate AI share: **10%**
+- Writing help for documentation/report clarity
+- Communication polishing for presentations
+- Minor guidance on structure and explanation
+
+Approximate human share: **90%**
+- Data collection and preparation
+- Script implementation and debugging
+- Feature extraction and analysis
+- Model training, evaluation, and artifact generation
+- Final repository integration and task delivery
+
+This keeps the project authentic, transparent, and learning-centered.
+
+---
+
+## 6) Project Quality Review
+
+### What is strong
+- Real multimodal scope across tabular, image, and audio data
+- Clear output artifacts at every stage
+- Practical audio augmentation and feature engineering workflow
+- Good evidence of team-based task distribution
+
+### What can improve next
+- Add a single “run all tasks” guide
+- Add environment dependency file and version pinning
+- Include schema/feature dictionary for each generated CSV
+- Add a compact architecture diagram in the main README
+
+---
+
+## 7) Casual Final Verdict
+This is a strong, working team project with clear effort across six tasks. The repository shows real execution, not placeholder content. With one more round of documentation polish in the main README, this can be presented confidently as both an academic submission and a portfolio-ready project.
