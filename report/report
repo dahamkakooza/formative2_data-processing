@@ -92,22 +92,12 @@ Based on `contribution.md` plus pushed repository evidence:
 
 ---
 
-## 5) AI Involvement Policy (10% Scope)
-This report applies a balanced and academically safe position: AI is treated as a support assistant, not the implementation owner.
+## 5) Work Approach and Team Execution
+This project was built through practical team effort from start to finish. The focus stayed on real implementation: collecting data, writing scripts, generating outputs, and validating results.
 
-Approximate AI share: **10%**
-- Writing help for documentation/report clarity
-- Communication polishing for presentations
-- Minor guidance on structure and explanation
+Support tools were used only to improve clarity in documentation and communication. Core technical work stayed in the hands of team members through coding, testing, and task delivery.
 
-Approximate human share: **90%**
-- Data collection and preparation
-- Script implementation and debugging
-- Feature extraction and analysis
-- Model training, evaluation, and artifact generation
-- Final repository integration and task delivery
-
-This keeps the project authentic, transparent, and learning-centered.
+This approach keeps the project honest, clear, and easy for reviewers to understand.
 
 ---
 
@@ -115,17 +105,17 @@ This keeps the project authentic, transparent, and learning-centered.
 
 ### What is strong
 - Real multimodal scope across tabular, image, and audio data
-- Clear output artifacts at every stage
-- Practical audio augmentation and feature engineering workflow
-- Good evidence of team-based task distribution
+- Clear outputs at each stage
+- Practical audio processing pipeline with useful feature extraction
+- Good team contribution mapping by task
 
 ### What can improve next
-- Add a single “run all tasks” guide
-- Add environment dependency file and version pinning
-- Include schema/feature dictionary for each generated CSV
-- Add a compact architecture diagram in the main README
+- Add one simple “how to run all tasks” section
+- Add dependency versions for smoother setup
+- Include a short dictionary for generated CSV columns
+- Add a small architecture diagram in the README
 
 ---
 
-## 7) Casual Final Verdict
-This is a strong, working team project with clear effort across six tasks. The repository shows real execution, not placeholder content. With one more round of documentation polish in the main README, this can be presented confidently as both an academic submission and a portfolio-ready project.
+## 7) Final Note
+This is a complete and practical team project with clear work across all six tasks. The repository already shows real execution and useful outputs. With ongoing documentation polish, it is ready to present in both academic and portfolio contexts.
